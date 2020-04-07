@@ -41,12 +41,11 @@ metadata:
   name: elasticsearch-operator
   namespace: openshift-operators
 spec:
-  channel: "$(oc get packagemanifest elasticsearch-operator -n openshift-marketplace -o jsonpath='{.status.channels[].name}')"
+  channel: "$(oc get packagemanifest elasticsearch-operator -n openshift-marketplace -o jsonpath='{.status.defaultChannel}')"
   installPlanApproval: Automatic
   name: elasticsearch-operator
   source: "$(oc get packagemanifest elasticsearch-operator -n openshift-marketplace -o jsonpath='{.status.catalogSource}')"
   sourceNamespace: "$(oc get packagemanifest elasticsearch-operator -n openshift-marketplace -o jsonpath='{.status.catalogSourceNamespace}')"
-  startingCSV: "$(oc get packagemanifest elasticsearch-operator -n openshift-marketplace -o jsonpath='{.status.defaultChannel}')"
 EOF
 
 oc create -f - << EOF
@@ -100,10 +99,21 @@ metadata:
   name: cluster-logging
   namespace: openshift-logging
 spec:
-  channel: "$(oc get packagemanifest cluster-logging -n openshift-marketplace -o jsonpath='{.status.channels[].name}')"
+  channel: "$(oc get packagemanifest cluster-logging -n openshift-marketplace -o jsonpath='{.status.defaultChannel}')"
   installPlanApproval: Automatic
   name: cluster-logging
   source: "$(oc get packagemanifest cluster-logging -n openshift-marketplace -o jsonpath='{.status.catalogSource}')"
   sourceNamespace: "$(oc get packagemanifest cluster-logging -n openshift-marketplace -o jsonpath='{.status.catalogSourceNamespace}')"
-  startingCSV: "$(oc get packagemanifest cluster-logging -n openshift-marketplace -o jsonpath='{.status.defaultChannel}')"
 EOF
+
+
+echo 'Waiting for opertaors...'
+
+for operator in "Cluster Logging" "Elasticsearch Operator";do
+while [[ $(oc get csv -o jsonpath='{.items[?(@.spec.displayName=="'"$operator"'")].status.phase}') != 'Succeeded' ]];do
+  sleep 1
+done
+echo $operator installed
+done
+
+echo "Operator installation completed, you may apply your elastic search instance."
