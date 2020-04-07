@@ -46,7 +46,7 @@ spec:
   name: elasticsearch-operator
   source: "$(oc get packagemanifest elasticsearch-operator -n openshift-marketplace -o jsonpath='{.status.catalogSource}')"
   sourceNamespace: "$(oc get packagemanifest elasticsearch-operator -n openshift-marketplace -o jsonpath='{.status.catalogSourceNamespace}')"
-  startingCSV: "$(oc get packagemanifest elasticsearch-operator -n openshift-marketplace -o jsonpath='{.status.defaultChannel')"
+  startingCSV: "$(oc get packagemanifest elasticsearch-operator -n openshift-marketplace -o jsonpath='{.status.defaultChannel}')"
 EOF
 
 oc create -f - << EOF
@@ -105,5 +105,5 @@ spec:
   name: cluster-logging
   source: "$(oc get packagemanifest cluster-logging -n openshift-marketplace -o jsonpath='{.status.catalogSource}')"
   sourceNamespace: "$(oc get packagemanifest cluster-logging -n openshift-marketplace -o jsonpath='{.status.catalogSourceNamespace}')"
-  startingCSV: "$(oc get packagemanifest cluster-logging -n openshift-marketplace -o jsonpath='{.status.defaultChannel')"
+  startingCSV: "$(oc get packagemanifest cluster-logging -n openshift-marketplace -o jsonpath='{.status.defaultChannel}')"
 EOF
