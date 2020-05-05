@@ -9,7 +9,6 @@ metadata:
   annotations:
     openshift.io/node-selector: ""
   labels:
-    openshift.io/cluster-logging: "true"
     openshift.io/cluster-monitoring: "true"
 EOF
 
@@ -21,7 +20,6 @@ metadata:
   annotations:
     openshift.io/node-selector: ""
   labels:
-    openshift.io/cluster-logging: "true"
     openshift.io/cluster-monitoring: "true"
 EOF
 
