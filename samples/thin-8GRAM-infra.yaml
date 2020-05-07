@@ -54,4 +54,11 @@ spec:
   collection:
     logs:
       type: "fluentd"
-      fluentd: {}
+      fluentd:
+        tolerations:
+          - effect: NoSchedule
+            key: infra
+            value: reserved
+          - effect: NoExecute
+            key: infra
+            value: reserved
