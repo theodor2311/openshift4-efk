@@ -1,6 +1,6 @@
 # openshift-efk
 
-Tested on 4.4.3
+Tested on 4.5.4
 
 # How to use
 
