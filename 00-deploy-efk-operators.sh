@@ -108,7 +108,7 @@ EOF
 echo 'Waiting for opertaors...'
 
 for operator in "Cluster Logging" "Elasticsearch Operator";do
-while [[ $(oc get csv -o jsonpath='{.items[?(@.spec.displayName=="'"$operator"'")].status.phase}') != 'Succeeded' ]];do
+while [[ $(oc get csv -o jsonpath='{.items[?(@.spec.displayName=="'"$operator"'")].status.phase}' -n openshift-logging) != 'Succeeded' ]];do
   sleep 1
 done
 echo $operator installed
