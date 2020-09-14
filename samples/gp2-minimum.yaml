@@ -6,12 +6,19 @@ metadata:
 spec:
   managementState: "Managed"
   logStore:
+    retentionPolicy:
+      application:
+        maxAge: 30d
+      infra:
+        maxAge: 7d
+      audit:
+        maxAge: 7d
     type: "elasticsearch"
     elasticsearch:
       nodeCount: 3
       resources:
         requests:
-          memory: 4Gi
+          memory: 2Gi
       storage:
         storageClassName: gp2
         size: 200G

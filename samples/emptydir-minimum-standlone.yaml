@@ -6,6 +6,13 @@ metadata:
 spec:
   managementState: "Managed"
   logStore:
+    retentionPolicy:
+      application:
+        maxAge: 30d
+      infra:
+        maxAge: 7d
+      audit:
+        maxAge: 7d
     type: "elasticsearch"
     elasticsearch:
       nodeCount: 1
