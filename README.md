@@ -1,13 +1,13 @@
-# openshift-efk
+# Handly scripts for managing EFK stack on OpenShift4
 
 Tested on OpenShift 4.5.8, Elasticsearch Operator 4.5.0-202008310950.p0
 
-# How to use
+## Deploy EFK stack on OpenShift
 
 Use ./00-deploy-efk-operators.sh to install required operators and projects  
 Deploy your own logging instance CRD, you may reference the samples in ./samples
 
-# ES_QUERY
+## ES_QUERY
 
 Wrapping the CURL command allowing you to directly query the Elasticsearch cluster without caring for the authentication, it will be executed on the Elasticsearch container directly so you can use localhost for the URL.
 ```bash
@@ -32,6 +32,6 @@ Wrapping the CURL command allowing you to directly query the Elasticsearch clust
 }
 ```
 
-# ES_UTIL
+## ES_UTIL
 
 Executing the es_util script on the Elasticsearch container.
