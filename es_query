@@ -2,8 +2,10 @@
 set -euoE pipefail
 if [[ $# -eq 0 ]] ; then
     echo 'Usage: ./es_query <QUERY>'
-    echo '  Example:'
+    echo 'Examples:'
+    echo '  # Querying Elasticsearch Health'
     echo '  ./es_query https://localhost:9200/_cluster/health?pretty=true'
+    echo ''
     exit 0
 fi
 
