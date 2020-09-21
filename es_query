@@ -2,8 +2,8 @@
 set -euoE pipefail
 if [[ $# -eq 0 ]] ; then
     echo 'Usage: ./es_query <QUERY>'
-    echo 'Example:'
-    echo './es_query https://localhost:9200/health?pretty=true'
+    echo '  Example:'
+    echo '  ./es_query https://localhost:9200/_cluster/health?pretty=true'
     exit 0
 fi
 
