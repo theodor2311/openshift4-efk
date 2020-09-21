@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euoE pipefail
 if [[ $# -eq 0 ]] ; then
-    echo 'Usage: ./es_query --query=<QUERY>'
+    echo 'Usage: ./es_util --query=<QUERY>'
     exit 0
 fi
 
