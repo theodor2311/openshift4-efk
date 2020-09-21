@@ -22,7 +22,7 @@ spec:
       storage:
         storageClassName: gp2
         size: 200G
-      redundancyPolicy: "ZeroRedundancy"
+      redundancyPolicy: "FullRedundancy"
   visualization:
     type: "kibana"
     kibana:
