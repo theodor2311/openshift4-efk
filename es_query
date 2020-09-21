@@ -1,0 +1,22 @@
+#!/bin/bash
+set -euoE pipefail
+if [[ $# -eq 0 ]] ; then
+    echo 'Usage: ./es_query <QUERY>'
+    echo 'Example:'
+    echo './es_query https://localhost:9200/health?pretty=true
+    exit 0
+fi
+
+readonly ELASTICSEARCH_INSTANCE=$(oc get pods -lcomponent=elasticsearch -n openshift-logging -o jsonpath='{.items[0].metadata.name}')
+[[ -z "${ELASTICSEARCH_INSTANCE}" ]] && echo 'Elasticsearch instance not found' && exit 1
+oc project openshift-logging >/dev/null
+
+ES_BASE=${ES_BASE:-https://localhost:9200}
+CONTENT_TYPE="application/json"
+ES_PATH_CONF=/etc/elasticsearch
+
+oc exec "${ELASTICSEARCH_INSTANCE}" -c elasticsearch -- curl -s -k \
+  --cert ${ES_PATH_CONF}/secret/admin-cert \
+  --key ${ES_PATH_CONF}/secret/admin-key \
+  ${CONTENT_TYPE:+"-H"} ${CONTENT_TYPE:+"Content-type:"}${CONTENT_TYPE:-} \
+  $@
