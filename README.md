@@ -1,6 +1,6 @@
 # openshift-efk
 
-Tested on 4.5.8
+Tested on OpenShift 4.5.8, Elasticsearch Operator 4.5.0-202008310950.p0
 
 # How to use
 
