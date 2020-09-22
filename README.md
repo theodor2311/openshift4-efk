@@ -36,7 +36,7 @@ Wrapping the CURL command allowing you to directly query the Elasticsearch clust
 
 Executing the es_util script on the Elasticsearch container.
 ```bash
-es_util --query=_cat/indices?v=true
+./es_util --query=_cat/indices?v=true
 health status index                  uuid                   pri rep docs.count docs.deleted store.size pri.store.size
 green  open   .security              NYkOmvlGQFOTkiER3beO_A   1   1          5            0     59.9kb         29.9kb
 green  open   .kibana_92668751_admin l62ISpSkS-e_tgDfBxzSpQ   1   2          2            0     65.1kb         22.7kb
