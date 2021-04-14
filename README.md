@@ -1,6 +1,6 @@
 # Handly scripts for managing EFK stack on OpenShift4
 
-Tested on OpenShift 4.5.8, Elasticsearch Operator 4.5.0-202008310950.p0
+Tested on OpenShift 4.7.5 cluster-logging.5.0.2-18 elasticsearch-operator.5.0.1-23
 
 ## Deploy EFK stack on OpenShift
 
