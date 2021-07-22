@@ -107,7 +107,7 @@ EOF
 
 echo 'Waiting for opertaors...(This is for final checking only, cancel it if does not work for you)'
 
-for operator in "Cluster Logging" "Elasticsearch Operator";do
+for operator in "Cluster Logging" "OpenShift Elasticsearch Operator";do
 while [[ $(oc get csv -o jsonpath='{.items[?(@.spec.displayName=="'"$operator"'")].status.phase}' -n openshift-logging) != 'Succeeded' ]];do
   sleep 1
 done
