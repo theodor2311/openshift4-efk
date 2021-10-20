@@ -104,14 +104,15 @@ spec:
   sourceNamespace: "$(oc get packagemanifest cluster-logging -n openshift-marketplace -o jsonpath='{.status.catalogSourceNamespace}')"
 EOF
 
+echo "The operators is deployed, use 'watch oc get csv -n openshift-logging' to check until both logging and elasticsearch operator installation succeeded"
 
-echo 'Waiting for opertaors...(This is for final checking only, cancel it if does not work for you)'
+# echo 'Waiting for opertaors...(This is for final checking only, cancel it if does not work for you)'
 
-for operator in "Cluster Logging" "OpenShift Elasticsearch Operator";do
-while [[ $(oc get csv -o jsonpath='{.items[?(@.spec.displayName=="'"$operator"'")].status.phase}' -n openshift-logging) != 'Succeeded' ]];do
-  sleep 1
-done
-echo $operator installed
-done
+# for operator in "Cluster Logging" "OpenShift Elasticsearch Operator";do
+# while [[ $(oc get csv -o jsonpath='{.items[?(@.spec.displayName=="'"$operator"'")].status.phase}' -n openshift-logging) != 'Succeeded' ]];do
+#  sleep 1
+# done
+# echo $operator installed
+# done
 
-echo "Operator installation completed, you may apply your elastic search instance."
+# echo "Operator installation completed, you may apply your elastic search instance."
