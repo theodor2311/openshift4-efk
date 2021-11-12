@@ -51,7 +51,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: prometheus-k8s
-  namespace: openshift-operators-redhat
+  namespace: openshift-logging
 rules:
 - apiGroups:
   - ""
@@ -68,7 +68,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: prometheus-k8s
-  namespace: openshift-operators-redhat
+  namespace: openshift-logging
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -76,7 +76,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: prometheus-k8s
-namespace: openshift-operators-redhat
+  namespace: openshift-monitoring
 EOF
 
 oc create -f - << EOF
